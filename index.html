@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta name="robots" content="noindex,nofollow" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<style type="text/css">
+		* { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+		body { margin: 0em;padding: 0em; color: #E0E0E0; background-color: #0000AA; font-family: consolas; }
+		#wrap { max-width: 40.125em;  padding:2em 1em ;margin: 0 auto; }
+		.ct { text-align: center; }
+		.hl { color: #0000AA; background-color: #C0C0C0; }
+
+		.emsg { margin: 1em 0em ; padding: 0em; }
+		
+		.ul_asterisks { list-style-type:none; margin: 1em 0em; padding-left: 0em; max-width: 32em; }
+		.ul_asterisks li { padding-left: 1em; text-indent: -1em; }
+		.ul_asterisks li:before { content: "*"; padding-right: 0.6em; }
+	</style>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// openFullscreen();
+			ResizeContent();
+		});
+		$(window).resize(function(event){
+			ResizeContent();
+		});
+
+		function ResizeContent() {
+			var dSize = { h: 642, v: 264 };
+			var winCorrection = 100;
+			var maxCorrection = 135;
+			if (screen.height > 1080) {
+				maxCorrection > 250;
+			}
+			var hRate = 100 * $(window).width() / dSize.h;
+			var vRate = 100 * ($(window).height() - winCorrection ) / dSize.v;
+			hRate = (hRate > maxCorrection) ? maxCorrection : hRate;
+			vRate = (vRate > maxCorrection) ? maxCorrection : vRate;
+			if (hRate > vRate) {
+				$("body").css("font-size", vRate + "%");
+			} else {
+				$("body").css("font-size", hRate + "%");
+			}
+
+			$("#wrap").css("margin-top", (($(window).height() - winCorrection - $("#wrap").height()) / 2) + "px");
+		}
+		/**
+		 *  https://www.w3schools.com/howto/howto_js_fullscreen.asp
+		*/
+		function openFullscreen() {
+			var elem = document.documentElement;
+			if (elem.requestFullscreen) {
+				elem.requestFullscreen();
+			} else if (elem.mozRequestFullScreen) { /* Firefox */
+				elem.mozRequestFullScreen();
+			} else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+				elem.webkitRequestFullscreen();
+			} else if (elem.msRequestFullscreen) { /* IE/Edge */
+				elem.msRequestFullscreen();
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="wrap">
+		<div class="ct"><apsn class="hl">&nbsp;Windows &nbsp;<span></div>
+		<p class="emsg">A fatal exception 0E has occurred at 0028:C00068F8 in VxD Vmm<01> + 
+		000059F8. The current application will be terminated.</p>
+		<ul class="ul_asterisks">
+			<li>Press F11 key to close full screen mode.</li>
+			<li>Press any key to terminate the application.</li>
+			<li>Press CTRL+ALT+DEL to restart your computer. You will lose any unsaved information in all applications.</li>
+		</ul>
+		<div class="ct">Press ant key to continue</div>
+	</div>
+</body>
+</html>
